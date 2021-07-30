@@ -1,0 +1,22 @@
+db.posts.update({
+    title: 'Post Two'},
+    {
+    title: 'Post Two'
+    category: 'News',
+    date: Date()
+    },
+    {
+        upsert: true // to override the the content
+    }
+})
+
+
+db.posts.update(
+    {title: 'Post Two'},
+    {
+        $set: {
+            body: 'Body of Post Two',
+            categories: 'Technology2'
+        }
+    }
+)

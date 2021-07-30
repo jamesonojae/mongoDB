@@ -1,0 +1,91 @@
+MongoDB Installation on windows systems
+-download the msi installer
+-install the application
+- add the path to environment variables
+-on windows terminal run: mongo (to show the version and information)
+##### MongoDB commands ######
+-run show dbs(to show db available)
+-run use nameOfDatabase(to navigate to database)
+-run use show collection(to show database tables)
+-run use db.dropDatabase(to drop database)
+-run use testDB(to create testDB database and switch to it)
+-run db.collectionsName.insert(to insert object data into the collection)
+-run db.collectionsName.insertMany(to insert array data into the collection)
+-run db.collectionsName.find()(to find/pull or document or rows in the collection)
+-run db.collectionsName.find().pretty()(to find/pull or document or rows in the collection in formatted format)
+
+### to search for a particular items/rows ###
+-run db.collectionsName.find({category: 'news'}).pretty() //find(clause and parameter like sql)
+-run db.collectionsName.find.sort({title: 1}).pretty() //sort(clause and 1 is Asending while -1 is descending)
+-run db.collectionsName.find({category: 'News'}).count() //count the occurrancy
+-run db.collectionsName.find().limit(2) //to limit output to 2 record
+-run db.collectionsName.findOne({category: 'News'}) //to get the lst record
+########### update #########
+// to update the entire document
+-run db.collectionsName.update({
+    title: 'Post Two'},
+    {
+    title: 'Post Two'
+    category: 'News',
+    date: Date()
+    },
+    {
+        upsert: true
+    }
+})
+NB: upsert: true means override the document
+
+// to update the one record
+db.posts.update(
+    {title: 'Post Two'},
+    {
+        $set: {
+            body: 'Body of Post Two',
+            categories: 'Technology2'
+        }
+    }
+)
+
+
+#MongoDB
+SQL                      NoSQL
+tables	=>		collections
+rows	=>		ducuments
+columns
+
+#collection will contain only one type of collection like user collections, blog collections but not user and blog collections
+#example of a collection 
+        {
+            "_id": ObjectId(12345),
+			"title": "Opening Party",
+			"snippet": "all about the..",
+			"body": "blah blah blah..."
+		}
+
+#Monogo DB Atlas setup
+sign up a mongo db account 
+choose a platform(free)
+create a cluster(db)
+create a db access user
+connect to db()
+
+connnections
+mongodb+srv://first-user:<password>@nodetutos.05lge.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+MONGOSE
+Mongoose is used to connect to Mongo database and communicate with it
+Mongoose is an ODM library - Object Document Mapping library
+How to use Mongose
+a)create a schema 
+b)create a model to fit the schema.
+
+Schemas and Models
+Schemas defines the structure of a type of data/document like the Properties and property types
+
+User Schema:                            Blog Schema:    
+-name(string), required                 -title(string), required
+-age(number)                            -snippet(string), required
+-bio(string), required                  -body(string), required
+
+Models allows us to communicate with database collections
+Blog Model --get-save-delete-update--etc----> database Blog collection 
